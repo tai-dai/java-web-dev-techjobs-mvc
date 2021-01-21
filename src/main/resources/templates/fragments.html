@@ -27,5 +27,40 @@
         </div>
     </div>
 
+    <table th:fragment = "job-table" class = "job-listing" th:each = "job : ${jobs}">
+        <tr>
+            <td th:text = "${#strings.toUpperCase('id: ')}"></td>
+            <td th:text = ${job.getId()}></td>
+        </tr>
+        <tr>
+            <td th:text = "${#strings.toUpperCase('name: ')}"></td>
+            <td th:text = ${job.getName()}></td>
+        </tr>
+        <tr>
+            <td th:text = "${#strings.toUpperCase('employer: ')}"></td>
+            <td>
+                <a th:href = "@{/list/jobs?column=employer&(value=${job.getEmployer()})}" th:text = ${job.getEmployer()}></a>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "${#strings.toUpperCase('location: ')}"></td>
+            <td>
+                <a th:href = "@{/list/jobs?column=location&(value=${job.getLocation()})}" th:text = ${job.getLocation()}></a>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "${#strings.toUpperCase('position type: ')}"></td>
+            <td>
+                <a th:href = "@{/list/jobs?column=positionType&(value=${job.getPositionType()})}" th:text = ${job.getPositionType()}></a>
+            </td>
+        </tr>
+        <tr>
+            <td th:text = "${#strings.toUpperCase('skill: ')}"></td>
+            <td>
+                <a th:href = "@{/list/jobs?column=coreCompetency&(value=${job.getCoreCompetency()})}" th:text = ${job.getCoreCompetency()}></a>
+            </td>
+        </tr>
+    </table>
+<!--/list/jobs?column=coreCompetency&value=iOS-->
 </body>
 </html>
